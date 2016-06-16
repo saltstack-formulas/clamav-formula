@@ -1,0 +1,4 @@
+clamav:
+  lookup:
+    package: clamav
+    service: clamav-daemon

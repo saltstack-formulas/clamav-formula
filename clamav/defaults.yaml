@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+clamav:
+  pkgs: 
+    - clamav
+    - clamav-daemon
+    - clamav-freshclam
+  user: clamav
+  group: clamav
+  daemon:
+    name: clamav-daemon
+    config: clamd.conf
+  freshclam:
+    name: clamav-freshclam
+    config: freshclam.conf
+

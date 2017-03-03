@@ -1,16 +1,43 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 clamav:
-  pkgs: 
-    - clamav
-    - clamav-daemon
-    - clamav-freshclam
   user: clamav
   group: clamav
-  daemon:
-    name: clamav-daemon
-    config: clamd.conf
-  freshclam:
-    name: clamav-freshclam
-    config: freshclam.conf
+  config_path: /etc/clamav
 
+  clamd:
+    pkgs: 
+      - clamav
+      - clamav-daemon
+    config_file: clamd.conf
+    service_name: clamd
+    service_state: running
+    service_onboot: True
+    config:
+      LogFile: /var/log/clamav/clamd.log
+      LogTime: 'yes'
+      LogFileMaxSize: 0
+      PidFile: /run/clamav/clamd.pid
+      TemporaryDirectory: /tmp
+      LocalSocket: /var/lib/clamav/clamd.sock
+      LocalSocketGroup: clamav
+      LocalSocketMode: 660
+      FixStaleSocket: 'yes'
+      User: clamav
+      SelfCheck: 3600
+
+  freshclam:
+    pkgs: 
+      - clamav-freshclam
+    config_file: freshclam.conf
+    service_name: freshclam
+    service_state: running
+    service_onboot: True
+    config:
+      UpdateLogFile: /var/log/clamav/freshclam.log
+      LogFileMaxSize: 0
+      DatabaseMirror: 
+        - db.local.clamav.net
+        - database.clamav.net
+      NotifyClamd: /etc/clamav/clamd.conf
+      MaxAttempts: 5

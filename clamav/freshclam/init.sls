@@ -2,5 +2,6 @@
 # vim: ft=sls
 
 include:
-  - clamav.clamd
-  - clamav.freshclam
+  - .install
+  - .config
+  - .service

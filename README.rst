@@ -19,4 +19,14 @@ Available states
 ``clamav``
 ------------
 
-Installs the clamav package, and starts the associated clamav services.
+Installs clamav and freshclam package, and starts the associated services.
+
+``clamav.clamd``
+----------------
+
+Installs clamav package, and starts the associated services.
+
+``clamav.freshclam``
+----------------
+
+Installs freshclam package, and starts the associated services.

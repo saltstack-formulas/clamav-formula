@@ -11,6 +11,8 @@ clamd_daemon:
   service.{{ clamd.service_state }}:
     - name: {{ clamd.service_name }}
     - enable: {{ clamd.service_onboot }}
+    - watch:
+      - file: clamd_config
     - require:  
       - file: clamd_config
       - pkg: clamd_pkg

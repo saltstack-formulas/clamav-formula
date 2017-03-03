@@ -11,6 +11,8 @@ freshclam_daemon:
   service.{{ freshclam.service_state }}:
     - name: {{ freshclam.service_name }}
     - enable: {{ freshclam.service_onboot }}
+    - watch:
+      - file: freshclam_config
     - require:
       - file: freshclam_config
       - pkg: freshclam_pkg

@@ -6,9 +6,6 @@ clamav:
   config_path: /etc/clamav
 
   clamd:
-    pkgs: 
-      - clamav
-      - clamav-daemon
     config_file: clamd.conf
     service_name: clamd
     service_state: running
@@ -27,8 +24,6 @@ clamav:
       SelfCheck: 3600
 
   freshclam:
-    pkgs: 
-      - clamav-freshclam
     config_file: freshclam.conf
     service_name: freshclam
     service_state: running

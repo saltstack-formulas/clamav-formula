@@ -37,17 +37,26 @@ that differ from whats in defaults.yaml
 ##}
 
 {% set os_family_map = salt['grains.filter_by']({
-        'Debian': {},
+        'Debian': {
+          'clamd': {
+            'pkgs': [ 'clamav', 'clamav-daemon'],
+            'service_name': 'clamav-daemon'
+          },
+          'freshclam': {
+            'pkgs': ['clamav-freshclam'],
+            'service_name': 'clamav-freshclam'
+           },
+        },
         'Suse': {},
         'Arch': {
           'clamd': {
             'pkgs': [ 'clamav' ],
             'service_name': 'clamd',
-            },
+          },
           'freshclam': {
             'pkgs': ['clamav'],
             'service_name': 'freshclamd',
-            },
+          },
         },
         'RedHat': {},
   }

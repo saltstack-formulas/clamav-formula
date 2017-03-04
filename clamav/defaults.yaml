@@ -34,5 +34,4 @@ clamav:
       DatabaseMirror: 
         - db.local.clamav.net
         - database.clamav.net
-      NotifyClamd: /etc/clamav/clamd.conf
       MaxAttempts: 5

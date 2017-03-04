@@ -17,16 +17,48 @@ Available states
     :local:
 
 ``clamav``
-------------
+----------
 
-Installs clamav and freshclam package, and starts the associated services.
+Meta-state that includes ``clamav.freshclam`` and ``clamav.clamd`` state.
+
 
 ``clamav.clamd``
 ----------------
 
-Installs clamav package, and starts the associated services.
+Meta-state to install clamd, config file and service.
+
+``clamav.clamd.install``
+------------------------
+
+Installs clamav package.
+
+``clamav.clamd.config``
+-----------------------
+
+Manages the clamd.conf file for clamd.
+
+``clamav.clamd.service``
+------------------------
+
+Manages the clamd daemon service.
 
 ``clamav.freshclam``
-----------------
+--------------------
 
-Installs freshclam package, and starts the associated services.
+Meta-state to Install freshclam, config file and service.
+
+``clamav.freshclam.install``
+----------------------------
+
+Installs freshclam package.
+
+``clamav.freshclam.config``
+---------------------------
+
+Manages the freshclam.conf file for freshclam.
+
+``clamav.freshclam.service``
+----------------------------
+
+Manages the freshclam daemon service.
+

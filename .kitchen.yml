@@ -58,7 +58,7 @@ suites:
         - name: epel
           repo: git
           source: https://github.com/saltstack-formulas/epel-formula.git
-    state_top:
+      state_top:
         base:
           '*':
             - epel

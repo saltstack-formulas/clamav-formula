@@ -58,7 +58,14 @@ that differ from whats in defaults.yaml
             'service_name': 'freshclamd',
           },
         },
-        'RedHat': {},
+        'RedHat': {
+          'clamd': {
+            'service_name': 'clamd@scan'
+          },
+          'freshclam': {
+            'service_name': '',
+          },
+        },
   }
   , grain="os_family"
   , merge=salt['pillar.get']('clamav:lookup'))

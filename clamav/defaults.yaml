@@ -4,12 +4,11 @@ clamav:
   clamd:
     pkgs:
       - clamav
-      - clamav-scanner-systemd
     user: clamav
     group: clamav
     config_path: /etc/clamav
     config_file: clamd.conf
-    service_name: clamd
+    service_name: clamav-daemon
     service_state: running
     service_onboot: True
     config:
@@ -30,9 +29,9 @@ clamav:
     group: clamav
     config_path: /etc/clamav
     pkgs:
-      - clamav-update
+      - clamav-freshclam
     config_file: freshclam.conf
-    service_name: freshclam
+    service_name: clamav-freshclam
     service_state: running
     service_onboot: True
     config:

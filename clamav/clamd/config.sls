@@ -17,3 +17,18 @@ clamd_config:
     - group: root
     - require:
       - pkg: clamd_pkg
+
+{% if grains['os_family'] == 'RedHat' %}
+  {% if salt['grains.get']('selinux:enforced', False) == 'Enforcing' %}
+antivirus_can_scan_system:
+  selinux.boolean:
+    - value: True
+    - persist: True
+
+clamd_use_jit:
+  selinux.boolean:
+    - value: True
+    - persist: True
+  {% endif %}
+{% endif %}
+

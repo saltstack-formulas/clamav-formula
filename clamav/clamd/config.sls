@@ -20,6 +20,10 @@ clamd_config:
 
 {% if grains['os_family'] == 'RedHat' %}
   {% if salt['grains.get']('selinux:enforced') == 'Enforcing' %}
+policycoreutils-python:
+  pkg.installed:
+    - name: policycoreutils-python
+
 antivirus_can_scan_system:
   selinux.boolean:
     - name: antivirus_can_scan_system

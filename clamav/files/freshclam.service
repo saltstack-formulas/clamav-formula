@@ -5,7 +5,7 @@ Documentation=man:freshclam(1) man:freshclam.conf(5) http://www.clamav.net/lang/
 ConditionPathExists=!/etc/cron.d/clamav-freshclam
 
 [Service]
-ExecStart=/usr/bin/freshclam -d --foreground=true
+ExecStart=/usr/bin/freshclam -d -c 2
 Restart=on-failure
 PrivateTmp=true
 StandardOutput=syslog

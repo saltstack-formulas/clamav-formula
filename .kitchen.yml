@@ -39,11 +39,6 @@ verifier:
   name: serverspec
   use_sudo: yes
   sudo_path: true
-  default_pattern: true
-  bundler_path: '/usr/local/bin'
-  rspec_path: '/usr/local/bin'
-  env_vars:
-    SUDO: true
 
 suites:
   - name: deb

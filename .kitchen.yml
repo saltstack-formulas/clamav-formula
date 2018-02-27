@@ -13,9 +13,9 @@ driver_config:
 platforms:
   - name: centos-7
     driver_config:
+      image: saltstack/centos-7-minimal
       provision_command:
         - yum -y install initscripts 
-      platform: rhel
       run_command: /usr/lib/systemd/systemd
       privileged: true
       pid_one_command: /usr/lib/systemd/systemd

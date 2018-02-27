@@ -2,23 +2,23 @@ clamav:
   clamd:
     config:
       Example: true
-			LogFile: /var/log/clamav/clamd.log
-			LogTime: 'yes'
-			LogFileMaxSize: 0
-			PidFile: /run/clamav/clamd.pid
-			TemporaryDirectory: /tmp
-			LocalSocket: /var/lib/clamav/clamd.sock
-			LocalSocketGroup: clamav
-			LocalSocketMode: 660
-			FixStaleSocket: 'yes'
-			User: clamav
-			SelfCheck: 3600
-			
+      LogFile: /var/log/clamav/clamd.log
+      LogTime: 'yes'
+      LogFileMaxSize: 0
+      PidFile: /run/clamav/clamd.pid
+      TemporaryDirectory: /tmp
+      LocalSocket: /var/lib/clamav/clamd.sock
+      LocalSocketGroup: clamav
+      LocalSocketMode: 660
+      FixStaleSocket: 'yes'
+      User: clamav
+      SelfCheck: 3600
+      
   freshclam:
     config:
       Example: true
-			UpdateLogFile: /var/log/clamav/freshclam.log
-			LogFileMaxSize: 0
-			DatabaseMirror: database.clamav.net
-			NotifyClamd: /etc/clamav/clamd.conf
-			MaxAttempts: 5
+      UpdateLogFile: /var/log/clamav/freshclam.log
+      LogFileMaxSize: 0
+      DatabaseMirror: database.clamav.net
+      NotifyClamd: /etc/clamav/clamd.conf
+      MaxAttempts: 5

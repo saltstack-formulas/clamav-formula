@@ -50,6 +50,10 @@ suites:
       rspec_path: '/usr/local/bin'
       env_vars:
         SUDO: true
+    provisioner:
+      pillars-from-files:
+        clamav.sls: test/integration/default/pillar.example.debian
+
 
   - name: rpm
     excludes:

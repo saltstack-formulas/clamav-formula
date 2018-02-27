@@ -17,3 +17,16 @@ freshclam_config:
     - group: root
     - require:
       - pkg: freshclam_pkg
+
+{% if grains['os_family'] == 'RedHat' %}
+freshclam_service
+  file.managed:
+    - name: /etc/systemd/systemd/{{ freshclam.service_name }}
+    - source: salt://clamav/files/{{ freshclam.service_name }}
+    - template: jinja
+    - mode: 644
+    - user: root
+    - group: root
+    - require:
+      - pkg: freshclam_pkg
+{% endif %}

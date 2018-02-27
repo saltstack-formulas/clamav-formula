@@ -15,4 +15,7 @@ freshclam_daemon:
       - file: freshclam_config
     - require:
       - file: freshclam_config
+{% if grains['os_family'] == 'RedHat' %}
+      - file: freshclam_service
+{% endif %}
       - pkg: freshclam_pkg

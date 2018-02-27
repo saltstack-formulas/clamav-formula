@@ -62,4 +62,27 @@ suites:
         base:
           '*':
             - epel
-						- clamav
+            - clamav
+
+  - name: rpm
+    excludes:
+      - debian-9
+      - ubuntu-16.04
+    provisioner:
+      dependencies:
+        - name: epel
+          repo: git
+          source: https://github.com/saltstack-formulas/epel-formula.git
+      state_top:
+        base:
+          '*':
+            - epel
+            - clamav
+      pillars:
+        top.sls:
+          base:
+            '*':
+            - epel
+            - clamav
+        epel.sls:
+          disabled: false

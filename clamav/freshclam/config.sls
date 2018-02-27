@@ -19,7 +19,7 @@ freshclam_config:
       - pkg: freshclam_pkg
 
 {% if grains['os_family'] == 'RedHat' %}
-freshclam_service
+freshclam_service:
   file.managed:
     - name: /etc/systemd/systemd/{{ freshclam.service_name }}
     - source: salt://clamav/files/{{ freshclam.service_name }}

@@ -19,16 +19,22 @@ clamd_config:
       - pkg: clamd_pkg
 
 {% if grains['os_family'] == 'RedHat' %}
-  {% if salt['grains.get']('selinux:enforced', False) == 'Enforcing' %}
+  {% if salt['grains.get']('selinux:enforced') == 'Enforcing' %}
 antivirus_can_scan_system:
   selinux.boolean:
+    - name: antivirus_can_scan_system
     - value: True
     - persist: True
+    - require:
+      - pkg: clamd_pkg
 
 clamd_use_jit:
   selinux.boolean:
+    - name: clamd_use_jit
     - value: True
     - persist: True
+    - require:
+      - pkg: clamd_pkg
   {% endif %}
 {% endif %}
 

@@ -10,6 +10,9 @@ for detecting Trojans, viruses, malware and other malicious threats
     See the full `Salt Formulas installation and usage instructions
     <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
 
+.. image:: https://travis-ci.org/aboe76/clamav-formula.svg?branch=master
+
+
 Available states
 ================
 

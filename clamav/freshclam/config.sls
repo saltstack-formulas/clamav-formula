@@ -9,7 +9,7 @@ include:
 
 freshclam_config:
   file.managed:
-    - name: {{ clamav.config_path}}/{{ freshclam.config_file }}
+    - name: {{ freshclam.config_path}}/{{ freshclam.config_file }}
     - source: salt://clamav/files/freshclam.conf
     - template: jinja
     - mode: 644

@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 clamav:
-  user: clamav
-  group: clamav
-  config_path: /etc/clamav
-
   clamd:
     pkgs:
       - clamav
       - clamav-scanner-systemd
+    user: clamav
+    group: clamav
+    config_path: /etc/clamav
     config_file: clamd.conf
     service_name: clamd
     service_state: running
@@ -27,6 +26,9 @@ clamav:
       SelfCheck: 3600
 
   freshclam:
+    user: clamav
+    group: clamav
+    config_path: /etc/clamav
     pkgs:
       - clamav-update
     config_file: freshclam.conf

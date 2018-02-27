@@ -9,7 +9,7 @@ include:
 
 clamd_config:
   file.managed:
-    - name: {{ clamav.config_path}}/{{ clamd.config_file }}
+    - name: {{ clamd.config_path}}/{{ clamd.config_file }}
     - source: salt://clamav/files/clamd.conf
     - template: jinja
     - mode: 644

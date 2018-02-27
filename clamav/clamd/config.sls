@@ -32,9 +32,9 @@ antivirus_can_scan_system:
     - require:
       - pkg: clamd_pkg
 
-clamd_use_jit:
+antivirus_use_jit:
   selinux.boolean:
-    - name: clamd_use_jit
+    - name: antivirus_use_jit
     - value: True
     - persist: True
     - require:

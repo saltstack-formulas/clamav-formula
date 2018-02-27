@@ -78,6 +78,8 @@ suites:
           '*':
             - epel
             - clamav
+      pillars-from-files:
+        clamav.sls: test/integration/default/pillar.example.redhat
       pillars:
         top.sls:
           base:

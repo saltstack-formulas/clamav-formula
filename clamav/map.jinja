@@ -60,7 +60,7 @@ that differ from whats in defaults.yaml
         },
         'Arch': {
           'clamd': {
-            'pkgs': [ 'clamav' ],
+            'pkgs': ['clamav'],
           },
           'freshclam': {
             'pkgs': ['clamav'],
@@ -68,6 +68,7 @@ that differ from whats in defaults.yaml
         },
         'RedHat': {
           'clamd': {
+            'pkgs': ['clamav', 'clamav-scanner-systemd'],
             'user': 'clamscan',
             'group': 'clamscan',
             'config_path': '/etc/clam.d',
@@ -75,6 +76,7 @@ that differ from whats in defaults.yaml
             'service_name': 'clamd@scan',
           },
           'freshclam': {
+            'pkgs': ['clamav-update'],
             'config_path': '/etc/',
             'service_name': 'freshclam.service',
           },

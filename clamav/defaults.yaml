@@ -2,8 +2,6 @@
 # vim: ft=yaml
 clamav:
   clamd:
-    pkgs:
-      - clamav
     user: clamav
     group: clamav
     config_path: /etc/clamav
@@ -28,8 +26,6 @@ clamav:
     user: clamav
     group: clamav
     config_path: /etc/clamav
-    pkgs:
-      - clamav-freshclam
     config_file: freshclam.conf
     service_name: clamav-freshclam
     service_state: running

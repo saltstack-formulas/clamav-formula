@@ -6,9 +6,12 @@ driver_config:
   use_sudo: false
   privileged: true
   require_chef_omnibus: false
+  provision_command: mkdir -p /run/sshd
 
 platforms:
   - name: centos-7
+    driver_config:
+      image: saltstack/centos-7-minimal
   - name: ubuntu-16.04
   - name: debian-9
 
@@ -36,12 +39,27 @@ verifier:
   name: serverspec
   use_sudo: yes
   sudo_path: true
+  default_pattern: true
+  bundler_path: '/usr/local/bin'
+  rspec_path: '/usr/local/bin'
+  env_vars:
+    SUDO: true
 
 suites:
-  - name: default
-    verifier:
-      default_pattern: true
-      bundler_path: '/usr/local/bin'
-      rspec_path: '/usr/local/bin'
-      env_vars:
-        SUDO: true
+  - name: deb
+    excludes:
+      - centos-7
+  - name: rpm
+    excludes:
+      - debian-9
+      - ubuntu-16.04
+    provisioner:
+      dependencies:
+        - name: epel
+          repo: git
+          source: https://github.com/saltstack-formulas/epel-formula.git
+    state_top:
+        base:
+          '*':
+            - epel
+						- clamav

@@ -1,7 +1,6 @@
 clamav:
   clamd:
     config:
-      Example: true
       LogFile: /var/log/clamav/clamd.log
       LogTime: 'yes'
       LogFileMaxSize: 0
@@ -16,7 +15,6 @@ clamav:
       
   freshclam:
     config:
-      Example: true
       UpdateLogFile: /var/log/clamav/freshclam.log
       LogFileMaxSize: 0
       DatabaseMirror: database.clamav.net

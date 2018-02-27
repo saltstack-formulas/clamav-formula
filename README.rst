@@ -5,6 +5,8 @@ clamav-formula
 SaltStack Formula to set up and configure ClamAV, an antivirus engine designed
 for detecting Trojans, viruses, malware and other malicious threats
 
+On 'Redhat' based systems epel-formula should also be used
+
 .. note::
 
     See the full `Salt Formulas installation and usage instructions

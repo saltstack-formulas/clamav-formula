@@ -49,25 +49,23 @@ suites:
   - name: deb
     excludes:
       - centos-7
-  - name: rpm
-    excludes:
-      - debian-9
-      - ubuntu-16.04
-    provisioner:
-      dependencies:
-        - name: epel
-          repo: git
-          source: https://github.com/saltstack-formulas/epel-formula.git
-      state_top:
-        base:
-          '*':
-            - epel
-            - clamav
+    verifier:
+      default_pattern: true
+      bundler_path: '/usr/local/bin'
+      rspec_path: '/usr/local/bin'
+      env_vars:
+        SUDO: true
 
   - name: rpm
     excludes:
       - debian-9
       - ubuntu-16.04
+    verifier:
+      default_pattern: true
+      bundler_path: '/usr/local/bin'
+      rspec_path: '/usr/local/bin'
+      env_vars:
+        SUDO: true
     provisioner:
       dependencies:
         - name: epel

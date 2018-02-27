@@ -45,7 +45,19 @@ that differ from whats in defaults.yaml
             'pkgs': ['clamav-freshclam'],
            },
         },
-        'Suse': {},
+        'Suse': {
+          'clamd': {
+            'pkgs': 'clamav',
+            'service_name': 'clamd.service',
+            'config_path': '/etc',
+            'config_file': 'clamd.conf',
+          },
+          'freshclam': {
+            'pkgs': 'clamav',
+            'service_name': 'freshclam.service',
+            'config_path': '/etc',
+          },
+        },
         'Arch': {
           'clamd': {
             'pkgs': [ 'clamav' ],

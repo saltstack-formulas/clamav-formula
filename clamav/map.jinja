@@ -59,12 +59,15 @@ that differ from whats in defaults.yaml
           },
         },
         'RedHat': {
-          'config_path': '/etc/clam.d',
           'clamd': {
+            'user': 'clamscan',
+            'group': 'clamscan',
+            'config_path': '/etc/clam.d',
             'config_file': 'scan.conf',
             'service_name': 'clamd@scan',
           },
           'freshclam': {
+            'config_path': '/etc/',
             'service_name': 'freshclam.service',
           },
         },

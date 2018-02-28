@@ -7,7 +7,7 @@ clamav:
       PidFile: /var/run/clamd.scan/clamd.pid
       TemporaryDirectory: /tmp
       LocalSocket: /var/run/clamd.scan/clamd.sock
-      LocalSocketGroup: virusgroup
+      LocalSocketGroup: clamscan 
       LocalSocketMode: 660
       FixStaleSocket: 'yes'
       User: clamscan

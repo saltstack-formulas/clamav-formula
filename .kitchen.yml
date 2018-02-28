@@ -71,7 +71,7 @@ suites:
         SUDO: true
     provisioner:
       pillars-from-files:
-        clamav.sls: test/integration/default/pillar.example.debian
+        clamav.sls: test/integration/deb/pillar.example.debian
 
   - name: rpm
     excludes:
@@ -94,7 +94,7 @@ suites:
             - epel
             - clamav
       pillars-from-files:
-        clamav.sls: test/integration/default/pillar.example.redhat
+        clamav.sls: test/integration/rpm/pillar.example.redhat
       pillars:
         top.sls:
           base:

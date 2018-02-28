@@ -4,9 +4,9 @@ clamav:
       LogSyslog: 'yes'
       LogTime: 'yes'
       LogFileMaxSize: 0
-      PidFile: /var/run/clamd.scan/clamd.pid
+      PidFile: /run/clamd.scan/clamd.pid
       TemporaryDirectory: /tmp
-      LocalSocket: /var/run/clamd.scan/clamd.sock
+      LocalSocket: /run/clamd.scan/clamd.sock
       LocalSocketGroup: clamscan 
       LocalSocketMode: 660
       FixStaleSocket: 'yes'

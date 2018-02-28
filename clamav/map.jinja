@@ -74,11 +74,22 @@ that differ from whats in defaults.yaml
             'config_path': '/etc/clamd.d',
             'config_file': 'scan.conf',
             'service_name': 'clamd@scan',
+            'config': {
+              'LogSyslog': 'yes',
+              'PidFile': '/run/clamav/clamd.pid',
+              'LocalSocket': '/var/run/clamd.scan/clamd.sock',
+              'LocalSocketGroup': 'virusgroup',
+              'User': 'clamscan',
+             },
           },
           'freshclam': {
             'pkgs': ['clamav-update'],
             'config_path': '/etc',
             'service_name': 'freshclam.service',
+            'config': {
+              'UpdateLogFile': '/var/log/freshclam.log',
+              'NotifyClamd': '/etc/clamd.d/scan.conf',
+            },
           },
         },
   }

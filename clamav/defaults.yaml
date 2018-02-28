@@ -10,7 +10,6 @@ clamav:
     service_state: running
     service_onboot: True
     config:
-      LogFile: /var/log/clamav/clamd.log
       LogTime: 'yes'
       LogFileMaxSize: 0
       PidFile: /run/clamav/clamd.pid

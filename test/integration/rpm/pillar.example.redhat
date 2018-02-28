@@ -1,7 +1,7 @@
 clamav:
   clamd:
     config:
-      LogFile: /var/log/clamd.scan
+      LogSyslog: 'yes'
       LogTime: 'yes'
       LogFileMaxSize: 0
       PidFile: /var/run/clamd.scan/clamd.pid

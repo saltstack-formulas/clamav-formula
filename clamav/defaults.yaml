@@ -6,6 +6,8 @@ clamav:
     group: clamav
     config_path: /etc/clamav
     config_file: clamd.conf
+    config_file_owner: root
+    config_file_group: root
     service_name: clamav-daemon
     service_state: running
     service_onboot: True
@@ -26,13 +28,15 @@ clamav:
     group: clamav
     config_path: /etc/clamav
     config_file: freshclam.conf
+    config_file_owner: root
+    config_file_group: root
     service_name: clamav-freshclam
     service_state: running
     service_onboot: True
     config:
       UpdateLogFile: /var/log/clamav/freshclam.log
       LogFileMaxSize: 0
-      DatabaseMirror: 
+      DatabaseMirror:
         - db.local.clamav.net
         - database.clamav.net
       MaxAttempts: 5

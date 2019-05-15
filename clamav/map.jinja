@@ -92,6 +92,41 @@ that differ from whats in defaults.yaml
             },
           },
         },
+      'FreeBSD': {
+          'clamd': {
+            'pkgs': [ 'clamav' ],
+            'service_name': 'clamav-clamd',
+            'config_path': '/usr/local/etc',
+            'config_file': 'clamd.conf',
+            'config_file_group': 'wheel',
+            'config': {
+              'LogFile': '/var/log/clamav/clamd.log',
+              'PidFile': '/var/run/clamav/clamd.pid',
+              'DatabaseDirectory': '/var/db/clamav',
+              'DatabaseDirectory': '/var/tmp',
+              'FixStaleSocket': 'yes',
+              'LocalSocket': '/var/run/clamav/clamd.sock',
+              'User': 'clamav',
+              'ScanMail': 'yes',
+            },
+          },
+          'freshclam': {
+            'pkgs': [ 'clamav' ],
+            'service_name': 'clamav-freshclam',
+            'config_path': '/usr/local/etc',
+            'config_file': 'freshclam.conf',
+            'config_file_group': 'wheel',
+            'config': {
+              'NotifyClamd': '/usr/local/etc/clamd.conf',
+              'UpdateLogFile': '/var/log/clamav/freshclam.log',
+              'PidFile': '/var/run/clamav/freshclam.pid',
+              'DatabaseDirectory': '/var/db/clamav',
+              'DatabaseOwner': 'clamav',
+              'DatabaseMirror': 'database.clamav.net',
+            },
+          },
+        },
+
   }
   , grain="os_family"
   , merge=salt['pillar.get']('clamav:lookup'))

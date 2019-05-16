@@ -1,58 +1,46 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
 ---
+# For help on this file's format, see https://kitchen.ci/
 driver:
   name: docker
-
-driver_config:
-  hostname: salt-formula.ci.local
   use_sudo: false
   privileged: true
-  require_chef_omnibus: false
+  run_command: /lib/systemd/systemd
   cap_add:
     - SYS_PTRACE
 
 platforms:
-  - name: centos-7
-    driver_config:
-      image: saltstack/centos-7-minimal
-      provision_command:
-        - yum -y install initscripts 
-      run_command: /usr/lib/systemd/systemd
-      privileged: true
-      pid_one_command: /usr/lib/systemd/systemd
-  - name: ubuntu-16.04
-    driver_config:
-      provision_command:
-        - apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
-      run_command: /lib/systemd/systemd
-      pid_one_command: /lib/systemd/systemd
-      privileged: true
-  - name: debian-9
-    driver_config:
-      provision_command:
-        - apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
-      run_command: /lib/systemd/systemd
-      pid_one_command: /lib/systemd/systemd
-      privileged: true
+  - name: debian-9-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:debian-9
+  - name: ubuntu-1804-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:ubuntu-18.04
+  - name: centos-7-2019-2-py3
+    driver:
+      image: netmanagers/salt-2019.2-py3:centos-7
 
 provisioner:
   name: salt_solo
+  log_level: info
+  salt_install: none
   require_chef: false
-  salt_version: latest
   formula: clamav
   salt_copy_filter:
     - .kitchen
     - .git
-  pillars-from-files:
-    clamav.sls: pillar.example
+  state_top:
+    base:
+      '*':
+        - clamav
   pillars:
     top.sls:
       base:
         '*':
           - clamav
-  state_top:
-    base:
-      '*':
-        - clamav
+  pillars-from-files:
+    clamav.sls: pillar.example
 
 verifier:
   name: serverspec
@@ -62,7 +50,7 @@ verifier:
 suites:
   - name: deb
     excludes:
-      - centos-7
+      - centos-7-2019-2-py3
     verifier:
       default_pattern: true
       bundler_path: '/usr/local/bin'
@@ -75,8 +63,8 @@ suites:
 
   - name: rpm
     excludes:
-      - debian-9
-      - ubuntu-16.04
+      - debian-9-2019-2-py3
+      - ubuntu-1804-2019-2-py3
     verifier:
       default_pattern: true
       bundler_path: '/usr/local/bin'

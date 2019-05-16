@@ -27,7 +27,6 @@ provisioner:
   salt_install: none
   require_chef: false
   formula: clamav
-  log_level: <%= ENV['SALT_DEBUG_LEVEL'] || 'info' %>
   salt_copy_filter:
     - .kitchen
     - .git
@@ -92,28 +91,3 @@ suites:
             - clamav
         epel.sls:
           disabled: false
-
-  - name: pkg
-    excludes:
-      - debian-9
-      - ubuntu-16.04
-      - centos-7
-    provisioner:
-      salt_bootstrap_options: -p git -p curl -p ca_root_nss -p py27-pip -p python -p bash
-    verifier:
-      name: inspec
-      default_pattern: true
-      env_vars:
-        SUDO: true
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - clamav
-      pillars-from-files:
-        clamav.sls: test/integration/pkg/pillar.example.freebsd
-      pillars:
-        top.sls:
-          base:
-            '*':
-            - clamav

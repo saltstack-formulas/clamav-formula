@@ -7,3 +7,7 @@ gem "kitchen-inspec"
 gem "net-ssh"
 gem "serverspec"
 gem "kitchen-verifier-serverspec"
+
+# for local freebsd testing
+# will fail if using travis
+gem "kitchen-vagrant", group: :freebsd

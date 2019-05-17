@@ -1,0 +1,47 @@
+---
+driver:
+  name: vagrant
+  hostname: freebsd.ci.local
+  cache_directory: false
+  customize:
+    memory: 2048
+  provision: true
+  linked_clone: true
+
+driver_config:
+  boot_timeout: 1200
+  provision_command:
+    - pkg install -y bash
+
+platforms:
+  - name: freebsd-11
+
+provisioner:
+  name: salt_solo
+  require_chef: false
+  salt_version: latest
+  formula: clamav
+  log_level: <%= ENV['SALT_DEBUG_LEVEL'] || 'info' %>
+  salt_copy_filter:
+    - .kitchen
+    - .git
+  pillars-from-files:
+    clamav.sls: test/integration/pkg/pillar.example.freebsd
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - clamav
+  state_top:
+    base:
+      '*':
+        - clamav
+
+verifier:
+  name: inspec
+  use_sudo: yes
+  sudo_path: true
+  default_pattern: true
+
+suites:
+  - name: default

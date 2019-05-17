@@ -13,8 +13,8 @@ freshclam_config:
     - source: salt://clamav/files/freshclam.conf
     - template: jinja
     - mode: 644
-    - user: root
-    - group: root
+    - user: {{ freshclam.config_file_owner }}
+    - group: {{ freshclam.config_file_group }}
     - require:
       - pkg: freshclam_pkg
 
